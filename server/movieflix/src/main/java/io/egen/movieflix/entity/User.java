@@ -12,6 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table
@@ -24,16 +25,26 @@ public class User {
 	private String id;
 	private String firstname;
 	private String lastname;
-	
 	@Column(unique = true)
 	private String email;
 	private String password;
 	private String userrole;
+	@OneToMany(mappedBy="user",cascade = CascadeType.PERSIST)
+	private List<UserRatings> ur;
 	/*@OneToOne(cascade = CascadeType.ALL)
 	private MovieList ml;*/
 	
 	public User(){
 		id = UUID.randomUUID().toString();
+	}
+	
+	public User(String firstname,String lastname, String email, String password,String userrole){
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.password = password;
+		this.userrole = userrole;
 	}
 	
 	public String getId() {
@@ -82,10 +93,19 @@ public class User {
 		this.userrole = userrole;
 	}
 
+	public List<UserRatings> getUserRatings() {
+		return ur;
+	}
+
+	public void setUserRatings(List<UserRatings> objUR) {
+		this.ur = objUR;
+	}
+
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
-				+ ", password=" + password + ", userrole=" + userrole + "]";
+				+ ", password=" + password + ", userrole=" + userrole + ", ur=" + ur + "]";
 	}
 	
 }

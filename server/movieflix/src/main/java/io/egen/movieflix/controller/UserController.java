@@ -25,8 +25,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET , value="{id}")
-	public User findOne(@PathVariable("id") String id){
+	public User findOne(@PathVariable("email") String id){
 		return service.findOne(id);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET , value="{email}")
+	public User findByEmail(@PathVariable("email") String email){
+		return service.findByEmail(email);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

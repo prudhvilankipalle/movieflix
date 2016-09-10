@@ -11,7 +11,7 @@ public interface UserRatingRepositary {
 
 	public UserRatings findOne(String title);
 
-	public UserRatings findByTitle(MovieList title);
+	public UserRatings findByTitle(String title);
 
 	public UserRatings update(UserRatings objUR);
 

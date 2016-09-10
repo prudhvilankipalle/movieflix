@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.egen.movieflix.entity.MovieList;
+import io.egen.movieflix.entity.User;
 import io.egen.movieflix.entity.UserRatings;
 import io.egen.movieflix.exception.EntityAlreadyExistException;
 import io.egen.movieflix.exception.EntityNotFoundException;
 import io.egen.movieflix.repository.MovieListRepository;
 import io.egen.movieflix.repository.UserRatingRepositary;
+import io.egen.movieflix.repository.UserRepositary;
 
 @Service
 public class UserRatingServiceImp implements UserRatingService{
@@ -20,6 +22,9 @@ public class UserRatingServiceImp implements UserRatingService{
 	
 	@Autowired
 	private MovieListRepository mLRepo;
+	
+	@Autowired 
+	private UserRepositary uRepo;
 	
 	@Override
 	public List<UserRatings> findAll() {
@@ -38,9 +43,11 @@ public class UserRatingServiceImp implements UserRatingService{
 
 	@Transactional
 	@Override
-	public UserRatings create(String title,UserRatings objUR) {
+	public UserRatings create(String id, String title,UserRatings objUR) {
+		User objUsr = uRepo.findOne(id);
 		MovieList objURCreation = mLRepo.findByTitle(title);
 		objUR.setTitle(objURCreation);
+		objUR.setUser(objUsr);
 		/*UserRatings existingTitle = userRrepo.findByTitle(objUR.getTitle());
 		if(existingTitle != null)
 		{

@@ -63,4 +63,54 @@ public class MovieListServiceImp implements MovieListService{
 		}
 		movielistrepo.delete(existingTitle);
 	}
+
+	@Override
+	public List<MovieList> findMoviesAndSerials(String type) {
+		return movielistrepo.findMoviesAndSerials(type);
+	}
+
+	@Override
+	public List<MovieList> sortImdbRatings(String type) {
+		return movielistrepo.sortImdbRatings(type);
+	}
+
+	@Override
+	public List<MovieList> sortYear(String type) {
+		return movielistrepo.sortYear(type);
+	}
+
+	@Override
+	public List<MovieList> sortImdbVotes(String type) {
+		return movielistrepo.sortImdbVotes(type);
+	}
+
+	@Override
+	public List<MovieList> topRated() {
+		return movielistrepo.topRated();
+	}
+	
+	@Override
+	public List<MovieList> topVoted() {
+		return movielistrepo.topVoted();
+	}
+	
+	@Override
+	public List<MovieList> latest() {
+		return movielistrepo.latest();
+	}
+
+	@Override
+	public List<MovieList> searchType(String type, String title) {
+		return movielistrepo.searchType(type,title);
+	}
+
+	@Override
+	public List<MovieList> searchYear(String year, String title) {
+		return movielistrepo.searchYear(year,title);
+	}
+
+	@Override
+	public List<MovieList> searchGenre(String genre, String title) {
+		return movielistrepo.searchGenre(genre,title);
+	}
 }

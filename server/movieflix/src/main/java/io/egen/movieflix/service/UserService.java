@@ -15,5 +15,7 @@ public interface UserService {
 	public User update(String id, User objUser);
 
 	public void remove(String id);
+
+	public User findByEmail(String email);
 	
 }

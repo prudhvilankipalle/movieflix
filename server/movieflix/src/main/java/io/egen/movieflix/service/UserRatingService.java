@@ -9,7 +9,7 @@ public interface UserRatingService {
 
 	public UserRatings findOne(String title);
 
-	public UserRatings create(String title,UserRatings objUR);
+	public UserRatings create(String title,String id, UserRatings objUR);
 
 	public UserRatings update(String title, UserRatings objUR);
 

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 @NamedQueries({ @NamedQuery (name="UserRatings.FindAll", query="SELECT u from UserRatings u ORDER BY u.averagerating"),
-	@NamedQuery (name="UserRatings.FindByTitle", query="SELECT u from UserRatings u WHERE u.title=:pTitle")
+	@NamedQuery (name="UserRatings.FindByTitle", query="SELECT u from UserRatings u WHERE u.id=:pTitle")
 })
 public class UserRatings {
 	
@@ -27,19 +27,22 @@ public class UserRatings {
 	private String userreview;
 	private String averagerating;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private MovieList title;
-	/*@ManyToOne
-	private User user;*/
-	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private User user;
 	public UserRatings(){
 		id = UUID.randomUUID().toString();
 	}
-	public UserRatings(String userratings,String userreview, String averageratings){
+	
+	public UserRatings(String userratings, String userreview, String averagerating, MovieList title, User user){
 		super();
+		
 		this.userratings = userratings;
 		this.userreview = userreview;
-		this.averagerating = averageratings;
+		this.averagerating = averagerating;
+		this.title = title;
+		this.user = user;
 	}
 	
 	public String getUserratings() {
@@ -72,16 +75,16 @@ public class UserRatings {
 	public void setTitle(MovieList title) {
 		this.title = title;
 	}
-	/*public User getUser() {
+	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
-	}*/
+	}
 	@Override
 	public String toString() {
 		return "UserRatings [id=" + id + ", userratings=" + userratings + ", userreview=" + userreview
-				+ ", averagerating=" + averagerating + ", title=" + title + "]";
+				+ ", averagerating=" + averagerating + ", title=" + title + ", user =" + user + "]";
 	}
 	
 }

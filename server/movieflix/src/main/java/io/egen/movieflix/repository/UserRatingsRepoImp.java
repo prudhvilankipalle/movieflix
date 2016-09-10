@@ -30,7 +30,7 @@ public class UserRatingsRepoImp implements UserRatingRepositary{
 	}
 
 	@Override
-	public UserRatings findByTitle(MovieList title) {
+	public UserRatings findByTitle(String title) {
 		TypedQuery<UserRatings> query = objEm.createNamedQuery("UserRatings.FindByTitle",UserRatings.class);
 		query.setParameter("pTitle", title);
 		List<UserRatings> userByTitle = query.getResultList();

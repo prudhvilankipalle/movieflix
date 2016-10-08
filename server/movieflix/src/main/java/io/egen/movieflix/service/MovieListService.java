@@ -34,6 +34,6 @@ public interface MovieListService {
 
 	public List<MovieList> searchYear(String year, String title);
 
-	public List<MovieList> searchGenre(String genre, String title);
+	public List<MovieList> searchGenre(String genre, String title); 
 
 }

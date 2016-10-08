@@ -13,10 +13,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table
 @NamedQueries({ @NamedQuery (name="UserRatings.FindAll", query="SELECT u from UserRatings u ORDER BY u.averagerating"),
-	@NamedQuery (name="UserRatings.FindByTitle", query="SELECT u from UserRatings u WHERE u.id=:pTitle")
+	@NamedQuery (name="UserRatings.FindByTitle", query="SELECT u from UserRatings u WHERE u.title=:pTitle")
 })
 public class UserRatings {
 	
@@ -28,8 +32,10 @@ public class UserRatings {
 	private String averagerating;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JsonBackReference(value="userratings-movielist")
 	private MovieList title;
 	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JsonBackReference(value="userratings-user")
 	private User user;
 	public UserRatings(){
 		id = UUID.randomUUID().toString();

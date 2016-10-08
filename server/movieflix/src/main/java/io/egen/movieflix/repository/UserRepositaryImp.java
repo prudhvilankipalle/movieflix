@@ -23,8 +23,8 @@ public class UserRepositaryImp implements UserRepositary{
 	}
 
 	@Override
-	public User findOne(String id) {
-		return objEm.find(User.class,id);
+	public User findOne(String email) {
+		return objEm.find(User.class,email);
 	}
 
 	@Override

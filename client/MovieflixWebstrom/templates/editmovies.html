@@ -1,0 +1,117 @@
+<div>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#/homepage/admin">
+                        MovieFlix
+                    </a>
+                </li>
+                <li>
+                    <a href="#/adminpopular">Popular</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <div id="register">
+            <form autocomplete="off">
+                <h1>Add Movie</h1>
+                <div class="form-group">
+                    <label for="title"> Title:</label>
+                    <input id="title" class="form-control" type="text" placeholder="Title" data-ng-model="movie.title">
+                </div>
+
+                <div class="form-group">
+                    <label for="yearreleased"> Year Released:</label>
+                    <input id="yearreleased" class="form-control" type="text" placeholder="Year Released"
+                           data-ng-model="movie.year">
+                </div>
+
+                <div class="form-group">
+                    <label for="rated"> Rated:</label>
+                    <input id="rated" class="form-control" type="text" placeholder="Rated As" ng-model="editCtrl.movie.rated">
+                </div>
+
+                <div class="form-group">
+                    <label for="releasedate"> Released Date:</label>
+                    <input id="releasedate" class="form-control" type="date" ng-model="editCtrl.movie.released">
+                </div>
+                <div class="form-group">
+                    <label for="runtime"> RunTime:</label>
+                    <input id="runtime" class="form-control" type="text" placeholder="Runtime"
+                           ng-model="editCtrl.movie.runtime">
+                </div>
+                <div class="form-group">
+                    <label for="genre"> Genre:</label>
+                    <input id="genre" class="form-control" type="text" placeholder="Genre" ng-model="editCtrl.movie.genre">
+                </div>
+                <div class="form-group">
+                    <label for="director"> Director:</label>
+                    <input id="director" class="form-control" type="text" placeholder="Director"
+                           ng-model="editCtrl.movie.director">
+                </div>
+                <div class="form-group">
+                    <label for="writer"> Writer:</label>
+                    <input id="writer" class="form-control" type="text" placeholder="Writer" ng-model="editCtrl.movie.writer">
+                </div>
+                <div class="form-group">
+                    <label for="actors"> Actors:</label>
+                    <input id="actors" class="form-control" type="text" placeholder="Actors" ng-model="editCtrl.movie.actors">
+                </div>
+                <div class="form-group">
+                    <label for="plot"> Plot:</label>
+                    <textarea id="plot" class="form-control" type="text" placeholder="Plot of the movie"
+                              ng-model="editCtrl.movie.plot"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="language"> Language:</label>
+                    <input id="language" class="form-control" type="text" placeholder="Languages of movie"
+                           ng-model="editCtrl.movie.language">
+                </div>
+                <div class="form-group">
+                    <label for="country"> Country:</label>
+                    <input id="country" class="form-control" type="text" placeholder="Country"
+                           ng-model="editCtrl.movie.country">
+                </div>
+                <div class="form-group">
+                    <label for="awards"> Awards:</label>
+                    <input id="awards" class="form-control" type="text" placeholder="Awards won and nominations"
+                           ng-model="editCtrl.movie.awards">
+                </div>
+                <div class="form-group">
+                    <label for="poster"> Poster:</label>
+                    <input id="poster" class="form-control" type="text"
+                           placeholder="Enter the link for poster of the movie" ng-model="editCtrl.movie.poster">
+                </div>
+                <div class="form-group">
+                    <label for="metascore"> Metascore:</label>
+                    <input id="metascore" class="form-control" type="text" placeholder="metascore"
+                           ng-model="editCtrl.movie.metascore">
+                </div>
+                <div class="form-group">
+                    <label for="imdbrating"> IMDB Rating:</label>
+                    <input id="imdbrating" class="form-control" type="text" placeholder="imdbrating of movie"
+                           ng-model="editCtrl.movie.imdbRating">
+                </div>
+                <div class="form-group">
+                    <label for="imdbvoters"> IMDB Votes:</label>
+                    <input id="imdbvoters" class="form-control" type="text" placeholder="imdbvotes of the movie"
+                           ng-model="editCtrl.movie.imdbVotes">
+                </div>
+                <div class="form-group">
+                    <label for="imdbid"> IMDB ID:</label>
+                    <input id="imdbid" class="form-control" type="text" placeholder="imdbID of the movie"
+                           ng-model="editCtrl.movie.imdbID">
+                </div>
+                <div class="form-group">
+                    <label for="type"> Type:</label>
+                    <input id="type" class="form-control" type="text" placeholder="Movie or Serial"
+                           ng-model="editCtrl.movie.type">
+                </div>
+                <button type="button" class="btn btn-primary">Add Movie</button>
+            </form>
+        </div>
+
+    </div>
+</div>

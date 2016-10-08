@@ -14,6 +14,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table
 @NamedQueries({ @NamedQuery (name="User.FindAll", query="SELECT u from User u ORDER BY u.email"),
@@ -30,6 +33,7 @@ public class User {
 	private String password;
 	private String userrole;
 	@OneToMany(mappedBy="user",cascade = CascadeType.PERSIST)
+	@JsonManagedReference(value="userratings-user")
 	private List<UserRatings> ur;
 	/*@OneToOne(cascade = CascadeType.ALL)
 	private MovieList ml;*/

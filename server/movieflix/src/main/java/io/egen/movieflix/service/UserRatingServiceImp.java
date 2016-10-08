@@ -32,12 +32,11 @@ public class UserRatingServiceImp implements UserRatingService{
 	}
 
 	@Override
-	public UserRatings findOne(String title) {
-		UserRatings existingTitle = userRrepo.findOne(title);
-		if(existingTitle== null)
-		{
-			throw new EntityNotFoundException("Title not Found");
-		}
+	public List<UserRatings> findOne(String title) {
+		UserRatings objUR = new UserRatings();
+		MovieList objURCreation = mLRepo.findByTitle(title);
+		objUR.setTitle(objURCreation);
+		List<UserRatings> existingTitle = userRrepo.findByTitle(objUR.getTitle());
 		return existingTitle;
 	}
 
@@ -59,22 +58,16 @@ public class UserRatingServiceImp implements UserRatingService{
 	@Transactional
 	@Override
 	public UserRatings update(String title, UserRatings objUR) {
-		UserRatings existingTitle = userRrepo.findOne(title);
-		if(existingTitle== null)
-		{
-			throw new EntityNotFoundException("Title not Found");
-		}
 		return userRrepo.update(objUR);
 	}
 
 	@Transactional
 	@Override
 	public void remove(String title) {
-		UserRatings existingTitle = userRrepo.findOne(title);
-		if(existingTitle == null)
-		{
-			throw new EntityNotFoundException("Title not Found");
-		}
+		UserRatings objUR = new UserRatings();
+		MovieList objURCreation = mLRepo.findByTitle(title);
+		objUR.setTitle(objURCreation);
+		UserRatings existingTitle = userRrepo.findOne(objUR.getTitle());
 		userRrepo.delete(existingTitle);
 	}
 

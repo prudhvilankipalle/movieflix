@@ -9,9 +9,9 @@ public interface UserRatingRepositary {
 
 	public List<UserRatings> findAll();
 
-	public UserRatings findOne(String title);
+	public UserRatings findOne(MovieList movieList);
 
-	public UserRatings findByTitle(String title);
+	public List<UserRatings> findByTitle(MovieList movieList);
 
 	public UserRatings update(UserRatings objUR);
 

@@ -16,9 +16,12 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table
-@NamedQueries({ @NamedQuery (name="MovieList.FindAll", query="SELECT ml from MovieList ml ORDER BY ml.imdbRating"),
+@NamedQueries({ @NamedQuery (name="MovieList.FindAll", query="SELECT ml from MovieList ml"),
 	@NamedQuery (name="MovieList.FindByTitle", query="SELECT ml from MovieList ml WHERE ml.Title=:mlTitle"),
 	@NamedQuery (name="MovieList.FindMoviesAndSerials", query="SELECT ml FROM MovieList ml WHERE ml.Type=:mlType"),
 	@NamedQuery (name="MovieList.sortImdbRatings", query="SELECT ml FROM MovieList ml WHERE ml.Type=:mlType ORDER BY ml.imdbRating"),
@@ -42,6 +45,7 @@ public class MovieList {
 	private String Runtime;
 	private String Genre;
 	private String Director;
+	@Column(length = 10560)
 	private String Writer;
 	private String Actors;
 	@Column(length = 1056)
@@ -56,6 +60,7 @@ public class MovieList {
 	private String Type;
 
 	@OneToMany(mappedBy="title",cascade = CascadeType.PERSIST)
+	@JsonManagedReference(value="userratings-movielist")
 	private List<UserRatings> ur;
 	public MovieList(){
 		

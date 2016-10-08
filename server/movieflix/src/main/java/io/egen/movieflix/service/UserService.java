@@ -8,7 +8,7 @@ public interface UserService {
 
 	public List<User> findAll();
 
-	public User findOne(String id);
+	public User findOne(String email);
 
 	public User create(User objUser);
 

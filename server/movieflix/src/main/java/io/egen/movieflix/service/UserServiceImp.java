@@ -23,8 +23,8 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public User findOne(String id) {
-		User objUser = userrepo.findOne(id);
+	public User findOne(String email) {
+		User objUser = userrepo.findOne(email);
 		if(objUser == null)
 		{
 			throw new EntityNotFoundException("User not Found");
@@ -67,7 +67,12 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public User findByEmail(String email) {
-		return userrepo.findByEmail(email);
+		User objUser = userrepo.findByEmail(email);
+		if(objUser == null)
+		{
+			throw new EntityNotFoundException("User not Found");
+		}
+		return objUser;
 	}
 
 }

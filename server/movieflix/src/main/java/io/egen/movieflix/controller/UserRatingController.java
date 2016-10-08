@@ -28,7 +28,7 @@ public class UserRatingController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET , value="{title}")
-	public UserRatings findOne(@PathVariable("title") String title){
+	public List<UserRatings> findOne(@PathVariable("title") String title){
 		return service.findOne(title);
 	}
 	

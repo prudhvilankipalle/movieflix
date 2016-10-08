@@ -25,20 +25,28 @@ public class UserRatingsRepoImp implements UserRatingRepositary{
 	}
 
 	@Override
-	public UserRatings findOne(String title) {
-		return objEm.find(UserRatings.class,title);
-	}
-
-	@Override
-	public UserRatings findByTitle(String title) {
+	public UserRatings findOne(MovieList title) {
 		TypedQuery<UserRatings> query = objEm.createNamedQuery("UserRatings.FindByTitle",UserRatings.class);
 		query.setParameter("pTitle", title);
 		List<UserRatings> userByTitle = query.getResultList();
-		if(userByTitle.size() == 1){
+		if(userByTitle.size() > 0){
 			return userByTitle.get(0);
 		}
 		else{
 			return null;
+		}
+	}
+
+	@Override
+	public List<UserRatings> findByTitle(MovieList title) {
+		TypedQuery<UserRatings> query = objEm.createNamedQuery("UserRatings.FindByTitle",UserRatings.class);
+		query.setParameter("pTitle", title);
+		List<UserRatings> userByTitle = query.getResultList();
+		if(userByTitle.size() > 0){
+			return userByTitle;
+		}
+		else{
+			return userByTitle;
 		}
 	}
 

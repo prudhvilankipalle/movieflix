@@ -1,0 +1,79 @@
+<div ng-controller="mainController as ctrlObj">
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#/homepage">
+                    MovieFlix
+                </a>
+            </li>
+            <li>
+                <a href="#/popular">Popular</a>
+            </li>
+            <li>
+                <a href="#/movies">Movies</a>
+            </li>
+            <li>
+                <a href="#/tvseries">Tv Series</a>
+            </li>
+            <li>
+                <a href="#/contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse">
+                <div class="nav navbar-nav navbar-right">
+                    <input type=button class="button-control" value="Sign Out" ng-click="ctrlObj.signOut()">
+                </div>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control searchbox" placeholder="Search..." ng-model="searchinput.title">
+                </form>
+                <!--<div class="button-control-left nav navbar-nav navbar-left">
+                    <input type=button class="button-control" value="Sign Out">
+                </div>-->
+            </div>
+        </div>
+        <div class=dropdown>
+            Sort By: <select class="sortby" ng-model="selectValue">
+            <option value="">---Please select---</option>
+            <option value="imdbRating">IMDB Ratings</option>
+            <option value="imdbVotes">IMDB Votes</option>
+            <option value="year">Year</option>
+        </select>
+            <hr>
+        </div>
+    </nav>
+
+</div>
+<!-- /#wrapper -->
+<!-- Page Content -->
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div dir-paginate="movies in ctrlObj.filteredlist = (ctrlObj.movielist | orderBy:selectValue:true | filter:searchinput) | itemsPerPage:16" ng-model="ctrlObj.remainingMovies">
+            <div class="col-lg-2 moviepart">
+                <img
+                        ng-src="{{movies.poster}}"
+                >
+
+                <div class="hovereffect" ng-click="ctrlObj.imageClick()">
+                    <p>{{movies.title}}</p>
+                    <p>{{movies.imdbRating}}</p>
+                    <p>{{movies.imdbVotes}}</p>
+                    <p>{{movies.year}}</p>
+                    <button class="info" ng-click="ctrlObj.showmore($index)">Show More</button>
+                </div>
+            </div>
+        </div>
+        <!--<h1>Home Page</h1>
+        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
+    </div>
+    <dir-pagination-controls class="pagination" max-size="5" direction-links="true"
+                             boundary-links="true"></dir-pagination-controls>
+</div>
+<!-- /#page-content-wrapper -->
+</div>

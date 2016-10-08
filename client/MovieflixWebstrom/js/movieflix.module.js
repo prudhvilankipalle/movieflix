@@ -5,14 +5,10 @@
     'use strict';
 
     angular
-        .module('movieflix',['angularUtils.directives.dirPagination','ngAnimate','ngRoute','ngResource','ngCookies'])
+        .module('movieflix',['angularUtils.directives.dirPagination','ngAnimate','ngRoute','ngResource','ngMessages','ngCookies'])
         .config(moduleConfig);
 
     function moduleConfig($routeProvider) {
-
-/*
-        $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-*/
 
         $routeProvider
             //Login

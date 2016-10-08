@@ -1,30 +1,45 @@
 <div ng-controller="registerController as regCtrl">
     <div id="wrapper">
         <div id="register">
-            <form ng-submit="regCtrl.register()" autocomplete="on">
+            <form ng-submit="regCtrl.register()" autocomplete="off" name="registerform">
                 <h1>Sign up</h1>
                 <div class="form-group">
                     <label for="firstname"> FirstName:</label>
-                    <input id="firstname" class="form-control" type="text" placeholder="firstname" ng-model="regCtrl.firstname">
+                    <input id="firstname" class="form-control" name="firstname" type="text" placeholder="firstname" ng-model="regCtrl.firstname" minlength="4" required>
+                    <div  class="error" ng-if="registerform.firstname.$dirty" ng-messages="registerform.firstname.$error">
+                        <p ng-message="required">First Name is required</p>
+                        <p ng-message="minlength">First name must have more than three characters</p>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="lastname"> LastName:</label>
-                    <input id="lastname" class="form-control" type="text" placeholder="lastname" ng-model="regCtrl.lastname">
+                    <input id="lastname" class="form-control" name="lastname" type="text" placeholder="lastname" ng-model="regCtrl.lastname" required>
+                    <div class="error" ng-if="registerform.lastname.$dirty" ng-messages="registerform.lastname.$error">
+                        <p ng-message="required">Last Name is required</p>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="emailsignup"> Email:</label>
-                    <input id="emailsignup" class="form-control" type="email" placeholder="mymail@mail.com" ng-model="regCtrl.email">
+                    <input id="emailsignup" class="form-control" name="email" type="email" placeholder="mymail@mail.com" ng-model="regCtrl.email" required>
+                    <div class="error" ng-if="registerform.email.$dirty" ng-messages="registerform.email.$error">
+                        <p ng-message="required">Email is required</p>
+                        <p ng-message="email">Email is invalid</p>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="passwordsignup"> Password:</label>
-                    <input id="passwordsignup" class="form-control" type="password" placeholder="eg. X8df!90EO" ng-model="regCtrl.password">
+                    <input id="passwordsignup" class="form-control" name="password" type="password" placeholder="eg. X8df!90EO" ng-model="regCtrl.password" minlength="8" required>
+                    <div class="error" ng-if="registerform.password.$dirty" ng-messages="registerform.password.$error">
+                        <p ng-message="required">Password is required</p>
+                        <p ng-message="minlength">Password must have a minimum of 8 characters</p>
+                    </div>
                 </div>
 
                 <p class="signin button">
-                    <input type="submit" value="Sign up"/>
+                    <input type="submit" value="Sign up" ng-disabled="registerform.$invalid"/>
                 </p>
                 <p class="change_link">
                     Already a member ? <a href="#/tologin" class="btn-link btn"> Go
